@@ -1,8 +1,8 @@
 <?php
 class Llapgoch_Core_Helper_Eav extends Mage_Core_Helper_Abstract{
-	protected $_aliasIndex = 0;
+   protected $_aliasIndex = 0;
 
-    public function joinEAV($collection, $mainTableForeignKey, $eavType, $attrCode){
+    public function joinEAV($collection, $mainTableForeignKey, $eavType, $attrCode, $mainTable = 'main_table'){
         $this->_aliasIndex++;
 
         $entityType = Mage::getModel('eav/entity_type')->loadByCode($eavType);
@@ -22,13 +22,13 @@ class Llapgoch_Core_Helper_Eav extends Mage_Core_Helper_Abstract{
 
             $collection->getSelect()
                 ->joinLeft(array($alias => $table),
-                    'main_table.'.$mainTableForeignKey.' = '.$alias.'.entity_id and '.$alias.'.attribute_id = '. $attr->getId(),
+                    $mainTable . '.'.$mainTableForeignKey.' = '.$alias.'.entity_id and '.$alias.'.attribute_id = '. $attr->getId(),
                     array($attribute->getAttributeCode() => $alias . "." . $field)
                 );
         }else{
             $collection->getSelect()
                 ->joinLeft(array($alias => $entityTable),
-                'main_table.'.$mainTableForeignKey.' = '. $alias.'.entity_id',
+                $mainTable . '.'.$mainTableForeignKey.' = '. $alias.'.entity_id',
                     $attribute->getAttributeCode()
                 );
         }
