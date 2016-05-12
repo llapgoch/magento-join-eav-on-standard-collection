@@ -3,7 +3,7 @@ Allows the joining of EAV based tables on a non-EAV Collection
 
 - This is a atandalone helper file - not a Magento module. It might be made into one in the future but at the moment it's a copy-paste per-project
 
-## Example One:
+## Example:
 
 This will pull customer email, firstname, and lastname from the customer EAV tables with the download_log collection.
 
