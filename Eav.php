@@ -1,5 +1,5 @@
 <?php
-class Stormking_Skin_Helper_Eav extends Mage_Core_Helper_Abstract{
+class Llapgoch_Core_Helper_Eav extends Mage_Core_Helper_Abstract{
     protected $_aliasIndex = 0;
 
     public function joinEAV($collection, $mainTableForeignKey, $eavType, $attrCode){
